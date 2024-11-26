@@ -1,2 +1,2 @@
 # VorTune
- Implementation Fortune algorithm to draw Voronoi diagram
+ Implementation Fortune algorithm for Voronoi diagram drawing
