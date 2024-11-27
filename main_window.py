@@ -167,6 +167,8 @@ class Graph_Frame(QFrame):
     _img_l : QLabel
     _check_b : QCheckBox
 
+    _cur_node_counter = -1
+
     def __init__(self, signal : pyqtSignal):
         super().__init__()
         signal.connect(self.update_graph)
@@ -195,6 +197,8 @@ class Graph_Frame(QFrame):
 
     def update_graph(self, tree : Beachline):
         if not self._check_b.isChecked(): return
+        if self._cur_node_counter == tree.node_counter: return
+        self._cur_node_counter = tree.node_counter
 
         if not tree.root:
             self._draw_flat()
