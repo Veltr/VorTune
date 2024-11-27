@@ -4,9 +4,6 @@ import numpy as np
 from PyQt5.QtCore import QPoint
 from PyQt5.QtGui import QPolygon
 
-# from forchun import Node
-
-
 class FEntity:
     @abstractmethod
     def x(self): pass
@@ -114,11 +111,6 @@ class Parabola(FEntity):
         t = 2. * a * x
         return a, -t, (d + y + t * x) / 2.
 
-    # def __lt__(self, other):
-    #     if self.x() != other.x(): return self.x() > other.x()
-    #     if self.y() != other.y(): return self.y() > other.y()
-    #
-    #     return True
 
 class Edge(FEntity):
     _start : tuple[float, float]
