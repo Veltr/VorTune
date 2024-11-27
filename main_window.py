@@ -202,19 +202,20 @@ class Graph_Frame(QFrame):
         dot = graphviz.Digraph()
 
         def _dive(node : Node, dot : graphviz.Digraph, par_name : str = None):
-            if node.type & 1: cur = f'Arc_{node.id}'
+            if node.type & 1: cur = f'Arc {node.id}'
             else:
-                if node.edge.grow_right: cur = f'Edge_R_{node.id}'
-                else: cur = f'Edge_L_{node.id}'
+                if node.edge.grow_right: cur = f'Edge R {node.id}'
+                else: cur = f'Edge L {node.id}'
 
             dot.node(cur)
-            if par_name: dot.edge(par_name, cur)
+            if par_name: dot.edge(par_name, cur, arrowhead='none')
 
             if node.left_node: _dive(node.left_node, dot, cur)
             if node.right_node: _dive(node.right_node, dot, cur)
 
         file_name = '__render'
         _dive(tree.root, dot)
+        # print(dot.source)
         dot.format = 'png'
         dot.render(file_name)
 

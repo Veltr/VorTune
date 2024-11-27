@@ -8,14 +8,14 @@ from PyQt5.QtCore import Qt, QSize, pyqtSignal, QPoint
 
 import numpy as np
 
-from forchun_entities import OldParabola, Site
+from forchun_entities import Parabola, Site
 
 
 class Image_Label(QLabel):
     _origin : QPixmap
-    _par : OldParabola
+    _par : Parabola
 
-    def __init__(self, pix : QPixmap, par : OldParabola):
+    def __init__(self, pix : QPixmap, par : Parabola):
         super().__init__()
         self.setMouseTracking(True)
 
@@ -65,7 +65,7 @@ class Parabola_Window(QMainWindow):
         # self._img_signal.connect(self._image_label.setPixmap)
         pix = QPixmap(size)
         pix.fill(QColor(0, 0, 0, 255))
-        self._image_label = Image_Label(pix, OldParabola(Site((400, 300))))
+        self._image_label = Image_Label(pix, Parabola(Site((400, 300))))
         self.setCentralWidget(self._image_label)
 
 
